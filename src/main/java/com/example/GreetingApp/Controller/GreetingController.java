@@ -22,4 +22,10 @@ public class GreetingController {
     public String getGreetingServiceLayer() {
         return GreetingService.getGreetingMessage();
     }
+
+    @GetMapping("/personalized")
+    public String getGreeting(@RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String lastName) {
+        return greetingService.getGreetingMessage(firstName, lastName);
+    }
 }
