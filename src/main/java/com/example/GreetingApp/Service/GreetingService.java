@@ -37,6 +37,13 @@ public class GreetingService {
     }
 
     public Optional<Greeting> getGreetingById(Long id) {
-        return greetingRepository.findById(id);
+        Optional<Greeting> greeting = greetingRepository.findById(id);
+        if (greeting.isPresent()) {
+            System.out.println("Found Greeting: " + greeting.get().getMessage());
+        } else {
+            System.out.println("Greeting not found with ID: " + id);
+        }
+        return greeting;
     }
+
 }
